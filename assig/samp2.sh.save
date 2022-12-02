@@ -1,0 +1,22 @@
+24
+clear
+read -p "Enter Parking Hours : " hrs
+
+if [ $hrs -eq 1 ]; then
+total=$(( hrs *30 ))
+
+	elif [[ $hrs -gt 1 && $hrs -le 9 ]]; then
+
+	hrs=$(( hrs - 1 ))
+	total1=30
+	total=$(( hrs * 20 ))
+	total=$(( total + total1 ))
+
+		elif [[ $hrs -gt 9 && $hrs -le 24 ]]; then
+
+		total=200
+
+	else
+	echo"Invalid input. Enter number from 1 - 24 only."
+fi
+echo "Parking Charge is : $total"

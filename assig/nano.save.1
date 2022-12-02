@@ -1,0 +1,32 @@
+fine=("" "10 Pesos" "20 Pesos" "30 Pesos" "40 Pesos" "50 Pesos" )
+
+case $((
+  (number > 0  && number <= 10  * 1 +
+  (number > 10 && number <= 20) * 2 +
+  (number > 20 && number <= 30) * 3 +
+  (number > 30 && number <= 40) * 4 +
+  (number > 40		      ) * 5 )) in
+
+(1)
+echo "Your FINE is ${fine[number]}"
+;;
+
+(2)
+echo "Your FINE is ${fine[number]}"
+;;
+
+(3)
+echo "Your FINE is ${fine[number]}"
+;;
+
+(4)
+echo "Your FINE is ${fine[number]}"
+;;
+
+(5)
+echo "Your FINE is ${fine[number]}"
+;;
+
+(*)
+echo "None of the above";;
+esac

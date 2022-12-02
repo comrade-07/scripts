@@ -74,7 +74,7 @@ echo "Invalid Quantity, Enter value greater than 0"
 ;;
 
 (*)
-echo "Invalid Input"
+echo "Invalid Unit Price, Enter value greater than 0"
 ;;
 
 esac

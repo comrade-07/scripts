@@ -1,36 +1,32 @@
 clear
-read -p "Enter NTI Amount : " nti
-if [ $(echo "$nti < 2500.00" | bc) -eq 1 ]
-then
-     tax=o
-     percenttax=0
-     totaltax=`echo "scale=2; $tax+$percenttax" | bc`
-elif [ $(echo "$nti >= 2500.00 && $nti <= 4999.99" | bc) -eq 1 ]
-then
-     tax=100
-     percenttax=`echo "scale=2; $nti*3/100" | bc`
-     totaltax=`echo "scale=2; $tax+$percenttax" | bc`
-elif [ $(echo "$nti >= 5000.00 && $nti <= 9999.99" | bc) -eq 1 ]
-then
-     tax=175
-     percenttax=`echo "scale=2; $nti*8/100" | bc`
-     totaltax=`echo "scale=2; $tax+$percenttax" | bc`
-elif [ $(echo "$nti >= 10000.00 && $nti <= 24999.99" | bc) -eq 1 ]
-then
-     tax=425
-     percenttax=`echo "scale=2; $nti*8/100" | bc`
-     totaltax=`echo "scale=2; $tax+$percenttax" | bc`
-elif [ $(echo "$nti >= 25000.00 && $nti <= 49999.99" | bc) -eq 1 ]
-then
-     tax=1625
-     percenttax=`echo "scale=2; $nti*13/100" | bc`
-     totaltax=`echo "scale=2; $tax+$percenttax" | bc`
-elif [ $(echo "$nti >= 50000.00" | bc) -eq 1 ]
-then
-     tax=4875
-     percenttax=`echo "scale=2; $nti*13/100" | bc`
-     totaltax=`echo "scale=2; $tax+$percenttax" | bc`
+read -p "Enter NTI Amount: " nti;
+if [ $nti -le 2500 ]; then
+        echo "Your Tax Due is 0 pesos"
+elif [[ $nti -ge 2500 && $nti -lt 5000 ]]; then
+        a=$((nti - 2500))
+        rate=$((a * 3 / 100))
+        due=$(( rate + 100))
+        echo "Your Tax Due is $due pesos"
+elif [[ $nti -ge 5000 && $nti -lt 10000 ]]; then
+        a=$((nti - 5000))
+        rate=$((a * 3 / 100))
+        due=$((rate + 175))
+        echo "Your Tax Due is $due pesos"
+elif [[ $nti -ge 10000 && $nti -lt 25000 ]]; then
+        a=$((nti - 10000))
+        rate=$((a * 8 / 100))
+        due=$((rate + 425))
+        echo "Your Tax Due is $due pesos"
+elif [[ $nti -ge 25000 && $nti -lt 50000 ]]; then
+        a=$((nti - 25000))
+        rate=$((a * 13 / 100))
+        due=$((rate + 1625))
+        echo "Your Tax Due is $due pesos"
+elif [ $nti -ge 50000 ]; then
+        a=$((nti - 50000))
+        rate=$((a * 13 / 100))
+        due=$((rate + 4875))
+        echo "Your Tax Due is $due pesos"
 else
-     echo "Invalid Examination Score"
+    echo "Invalid Value"
 fi
-     echo "Your TAX Due is $totaltax pesos"

@@ -8,10 +8,10 @@ if [ $hrs -gt 0 ] && [ $hrs -le 30 ]; then
 
 rpay=`echo "scale=2; $hrs * 250.00" | bc`
 total=$rpay
-
+otpay=0.00
 echo "Your Payroll Details   :  "
 echo "Regular Pay            : $rpay"
-echo "Overtime Pay           : "
+echo "Overtime Pay           : $otpay"
 echo "Total Weekly Pay       : $total"
 
         elif [ $hrs -gt 30 ] && [ $hrs -le 80 ]; then

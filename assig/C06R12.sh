@@ -7,6 +7,7 @@ echo
 
 if [ $hrs -le 3 ]; then
 	total=$(( hrs * chg ))	
+echo "First three hours is   : $total "
 echo "Your Rental Bill is    : "
 	elif [ $hrs -gt 3 ]; then
 
